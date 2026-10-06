@@ -1,0 +1,34 @@
+# ============================================================
+# 白名单式 .gitignore：默认排除全部，仅放行下方列出的源码与文档
+# 本仓库只包含应用源码；Electron 运行时、逆向分析产物、
+# 备份、账号数据等一律不上传
+# ============================================================
+
+# 默认排除根下所有内容
+/*
+
+# ---- 项目根放行 ----
+!/.gitignore
+!/LICENSE
+!/PROGRESS.md
+!/README.md
+!/backup.ps1
+!/docs/
+
+# ---- 应用源码放行（resources/app）----
+!/resources/
+/resources/*
+!/resources/app/
+/resources/app/*
+!/resources/app/package.json
+!/resources/app/package-lock.json
+!/resources/app/electron/
+!/resources/app/src/
+!/resources/app/tools/
+!/resources/app/build/
+
+# ---- 源码内部产物排除 ----
+resources/app/electron/node_modules/
+resources/app/src/node_modules/
+**/.DS_Store
+**/Thumbs.db
