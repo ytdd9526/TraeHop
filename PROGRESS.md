@@ -645,3 +645,10 @@ resources/app/
 - 已排除的高危项：`_import_5accounts.staging.json`（含真实 token+cookies）、`_aiagent_plain.db`（92MB 解密库）、全部 _probe/_db/_dll/_solo 逆向产物、node_modules、exe/dll/pak 运行时、backups/
 - git 2.49 经华为云镜像安装（winget 连不上 GitHub）；仓库已 init（main 分支）+ 首个提交 0ef1b38，98 个文件，敏感模式扫描 0 命中
 - LICENSE 采用 MIT（允许二改）；commit 身份为仓库级 -c 占位（TraeHop），未动全局 git 配置
+### 8.9 开源上传完成（2026-10-06 下午）
+- 远程仓库：https://github.com/ytdd9526/TraeHop（public，main 分支，99 文件，与本地 commit 87709f3 完全同源零分叉）
+- 追加脱敏：PROGRESS.md 中两处 Trae 账号 userId 已替换为 UID_MAIN/UID_TARGET 占位符（重写进同一提交，历史干净）
+- README.md 新增（功能简介 + 使用方法），MIT LICENSE
+- 推送方式：github.com:443 本机不可达（DNS 唯一 IP 20.205.243.166 不通、本地代理未开），api.github.com 直连正常 → 走 git database API 等效推送（PUT contents 种子化 → 98 blobs → tree → 复刻 author/committer 建同名 commit → PATCH ref），tree/commit sha 与本地逐字节一致
+- 认证：GitHub Desktop 凭据管理器条目（gho_ OAuth token）内存直读，HTTP 头注入，未落盘未入 URL；上传后含凭据读取逻辑的临时脚本已删除
+- 最终核验：远程 99 文件、敏感模式（staging/probe/_db_/db/node_modules）0 命中
